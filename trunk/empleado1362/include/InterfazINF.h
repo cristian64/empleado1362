@@ -1,5 +1,9 @@
-#ifndef _InterfazINF_H_
-#define _InterfazINF_H_
+/// Fichero de cabecera de la clase InterfazINF.
+/** \file InterfazINF.h
+ */
+
+#ifndef _INTERFAZINF_H
+#define _INTERFAZINF_H
 
 //#include "Mysql.h"
 #include <iostream>

@@ -1,5 +1,9 @@
-#ifndef _Juego_H_
-#define _Juego_H_
+/// Fichero de cabecera de la clase Juego.
+/** \file Juego.h
+ */
+
+#ifndef _JUEGO_H
+#define _JUEGO_H
 
 #include "InterfazGFX.h"
 #include "InterfazIA.h"
@@ -7,6 +11,7 @@
 #include "InterfazINF.h"
 #include "InterfazSND.h"
 //#include "ManejadorEventos.h"
+//#include "Nivel.h"
 #include <iostream>
 
 using namespace std;

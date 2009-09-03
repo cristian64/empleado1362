@@ -1,5 +1,9 @@
-#ifndef _InterfazGFX_H_
-#define _InterfazGFX_H_
+/// Fichero de cabecera de la clase InterfazGFX.
+/** \file InterfazGFX.h
+ */
+	
+#ifndef _INTERFAZGFX_H_
+#define _INTERFAZGFX_H
 
 #include "Ogre.h"
 #include "OgreConfigFile.h"
@@ -15,9 +19,9 @@ using namespace Ogre;
 class InterfazGFX
 {
 	public:
-		
-		/// Obtiene la instancia.
-		static InterfazGFX* getInstancia();
+
+            /// Obtiene la instancia.
+            static InterfazGFX* getInstancia();
 	    
 	    /// Destructor por defecto.
 	    ~InterfazGFX();
@@ -26,14 +30,14 @@ class InterfazGFX
 	    void iniciar();
 	    
 	private:
-	
-		 /// Constructor por defecto.
+
+            /// Constructor por defecto.
 	    InterfazGFX();
 	    
 	    /// Instancia de la clase.
 	    static InterfazGFX* instancia;
 	
-		/// Nodo raíz del árbol.
+            /// Nodo raíz del árbol.
 	    Root *mRoot;
 	    
 	    /// Nodo de la cámara.
@@ -48,8 +52,8 @@ class InterfazGFX
 	    /// Ventana.
 	    RenderWindow* mWindow;
 		
-		/// Ruta de los recursos.
-		Ogre::String mResourcePath;
+            /// Ruta de los recursos.
+            Ogre::String mResourcePath;
 	
 	    /// Establece la configuración.
 	    virtual bool setup();
@@ -57,32 +61,32 @@ class InterfazGFX
 	    /// Configura la aplicación.
 	    bool configure();
 	
-		/// Selecciona el SceneManager.
+            /// Selecciona el SceneManager.
 	    void chooseSceneManager();
 
-		/// Crea la cámara.
+            /// Crea la cámara.
 	    void crearCamara();
 	
-		/// Pura mierda.
+            /// Pura mierda.
 	    void createFrameListener();
-	
-		/// Crea la escena del juego.
-		void crearEscena();
-		
-		/// Destruye la escena del juego.
+
+            /// Crea la escena del juego.
+            void crearEscena();
+
+            /// Destruye la escena del juego.
 	    void destruirEscena();
 	    
-		/// Crea los viewports.
+            /// Crea los viewports.
 	    void crearViewports();
 	
 	    /// Método que definirá el código de los recursos.
 	    void setupResources();
 
-		/// Crea resourceListener
-		void createResourceListener();
+            /// Crea resourceListener
+            void createResourceListener();
 
-		/// Carga los recursos.
-		void cargarRecursos();
+            /// Carga los recursos.
+            void cargarRecursos();
 	
 	protected:
 		

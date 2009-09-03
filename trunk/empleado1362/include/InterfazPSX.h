@@ -1,5 +1,9 @@
-#ifndef _InterfazPSX_H_
-#define _InterfazPSX_H_
+/// Fichero de cabecera de la clase InterfazPSX.
+/** \file InterfazPSX.h
+ */
+
+#ifndef _INTERFAZPSX_H
+#define _INTERFAZPSX_H
 
 //#include "PhysX.h"
 #include <iostream>
