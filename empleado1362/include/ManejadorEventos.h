@@ -1,5 +1,9 @@
-#ifndef _ManejadorEventos_H_
-#define _ManejadorEventos_H_
+/// Fichero de cabecera de la clase ManejadorEventos.
+/** \file ManejadorEventos.h
+ */
+
+#ifndef _MANEJADOREVENTOS_H
+#define _MANEJADOREVENTOS_H
 
 #define OIS_DYNAMIC_LIB
 #include <OIS/OIS.h>

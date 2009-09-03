@@ -1,5 +1,9 @@
-#ifndef _InterfazIA_H_
-#define _InterfazIA_H_
+/// Fichero de cabecera de la clase InterfazIA.
+/** \file InterfazIA.h
+ */
+
+#ifndef _INTERFAZIA_H
+#define _INTERFAZIA_H
 
 //#include "MElopienso.h"
 #include <iostream>

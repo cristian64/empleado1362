@@ -4,15 +4,69 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <logicalFolder name="include" displayName="include" projectFiles="true">
+        <itemPath>include/FrameListener.h</itemPath>
+        <itemPath>include/InterfazGFX.h</itemPath>
+        <itemPath>include/InterfazIA.h</itemPath>
+        <itemPath>include/InterfazINF.h</itemPath>
+        <itemPath>include/InterfazPSX.h</itemPath>
+        <itemPath>include/InterfazSND.h</itemPath>
+        <itemPath>include/Juego.h</itemPath>
+        <itemPath>include/ManejadorEventos.h</itemPath>
+        <itemPath>Nivel.h</itemPath>
+      </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
                    projectFiles="true">
+      <logicalFolder name="Media" displayName="Media" projectFiles="true">
+        <logicalFolder name="DeferredShadingMedia"
+                       displayName="DeferredShadingMedia"
+                       projectFiles="true">
+          <logicalFolder name="DeferredShading"
+                         displayName="DeferredShading"
+                         projectFiles="true">
+            <logicalFolder name="material" displayName="material" projectFiles="true">
+              <logicalFolder name="glsl" displayName="glsl" projectFiles="true">
+              </logicalFolder>
+              <logicalFolder name="hlsl" displayName="hlsl" projectFiles="true">
+              </logicalFolder>
+            </logicalFolder>
+            <logicalFolder name="post" displayName="post" projectFiles="true">
+              <logicalFolder name="glsl" displayName="glsl" projectFiles="true">
+              </logicalFolder>
+              <logicalFolder name="hlsl" displayName="hlsl" projectFiles="true">
+              </logicalFolder>
+            </logicalFolder>
+          </logicalFolder>
+        </logicalFolder>
+        <logicalFolder name="fonts" displayName="fonts" projectFiles="true">
+        </logicalFolder>
+        <logicalFolder name="gui" displayName="gui" projectFiles="true">
+        </logicalFolder>
+        <logicalFolder name="materials" displayName="materials" projectFiles="true">
+          <logicalFolder name="programs" displayName="programs" projectFiles="true">
+          </logicalFolder>
+          <logicalFolder name="scripts" displayName="scripts" projectFiles="true">
+          </logicalFolder>
+          <logicalFolder name="textures" displayName="textures" projectFiles="true">
+          </logicalFolder>
+        </logicalFolder>
+        <logicalFolder name="models" displayName="models" projectFiles="true">
+        </logicalFolder>
+        <logicalFolder name="overlays" displayName="overlays" projectFiles="true">
+        </logicalFolder>
+        <logicalFolder name="packs" displayName="packs" projectFiles="true">
+        </logicalFolder>
+        <logicalFolder name="particle" displayName="particle" projectFiles="true">
+        </logicalFolder>
+        <logicalFolder name="PCZAppMedia" displayName="PCZAppMedia" projectFiles="true">
+        </logicalFolder>
+      </logicalFolder>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -20,6 +74,11 @@
       <itemPath>Makefile</itemPath>
     </logicalFolder>
   </logicalFolder>
+  <sourceRootList>
+    <Elem>include</Elem>
+    <Elem>Media</Elem>
+    <Elem>lib</Elem>
+  </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
     <conf name="Debug" type="1">
