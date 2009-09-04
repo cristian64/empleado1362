@@ -4,7 +4,7 @@
 
 #include "InterfazGFX.h"
 #include <iostream>
-
+     
 using namespace std;
 
 InterfazGFX* InterfazGFX::instancia = NULL;
@@ -140,22 +140,102 @@ void InterfazGFX::createFrameListener()
 void InterfazGFX::crearEscena()
 {
 	mSceneMgr->setAmbientLight(ColourValue(1, 1, 1));
-	Entity *ent1 = mSceneMgr->createEntity("Pinguino", "monigote1.mesh");
-	SceneNode *node1 = mSceneMgr->getRootSceneNode()->createChildSceneNode("NodoPinguino");
-	node1->attachObject(ent1);
-	node1->scale(100,100,100);
-	node1->pitch( Degree(-90));
+
+	// Suelo1
+	Entity* ent_oficina_suelo1[10];
+	for( int i=0; i<10; i++)
+	{
+		ent_oficina_suelo1[i] = mSceneMgr->createEntity("ent_oficina_suelo1_"+i,"oficina_suelo1.mesh");
+	}
+
+	SceneNode* nod_oficina_suelo1[10];
 	
-	Entity *ent2 = mSceneMgr->createEntity("Oso", "monigote2.mesh");
-	SceneNode *node2 = mSceneMgr->getRootSceneNode()->createChildSceneNode("NodoOso");
-	node2->attachObject(ent2);
+	for( int i=0; i<10; i++)
+	{
+		nod_oficina_suelo1[i] = mSceneMgr->getRootSceneNode()->createChildSceneNode("nodo_oficina_suelo1_"+i);
+		nod_oficina_suelo1[i]->attachObject(ent_oficina_suelo1[i]);
+		nod_oficina_suelo1[i]->scale(10,10,10);
+		int posX = (80*(i%5))-400;
+		int posY = -200;
+		int posZ = (80*(i/5))-100;
+		nod_oficina_suelo1[i]->setPosition(Vector3( posX ,posY, posZ));
+		nod_oficina_suelo1[i]->pitch( Degree(-90));
+	}
+
+	// Suelo2
+	Entity* ent_oficina_suelo2[10];
+	for( int i=0; i<10; i++)
+	{
+		ent_oficina_suelo2[i] = mSceneMgr->createEntity("ent_oficina_suelo2_"+i,"oficina_suelo2.mesh");
+	}
+
+	SceneNode* nod_oficina_suelo2[10];
+
+	for( int i=0; i<10; i++)
+	{
+		nod_oficina_suelo2[i] = mSceneMgr->getRootSceneNode()->createChildSceneNode("nodo_oficina_suelo2_"+i);
+		nod_oficina_suelo2[i]->attachObject(ent_oficina_suelo2[i]);
+		nod_oficina_suelo2[i]->scale(10,10,10);
+		int posX = (80*(i%5));
+		int posY = -200;
+		int posZ = (80*(i/5))-100;
+		nod_oficina_suelo2[i]->setPosition(Vector3( posX ,posY, posZ));
+		nod_oficina_suelo2[i]->pitch( Degree(-90));
+	}
+	
+	// Pared1
+	Entity* ent_oficina_pared1[10];
+
+	for( int i=0; i<10; i++)
+	{
+		ent_oficina_pared1[i] = mSceneMgr->createEntity("ent_oficina_pared1_"+i,"oficina_pared1.mesh");
+	}
+
+	SceneNode* nod_oficina_pared1[10];
+
+	for( int i=0; i<10; i++)
+	{
+		nod_oficina_pared1[i] = mSceneMgr->getRootSceneNode()->createChildSceneNode("nodo_oficina_pared1_"+i);
+		nod_oficina_pared1[i]->attachObject(ent_oficina_pared1[i]);
+		nod_oficina_pared1[i]->scale(10,10,10);
+		int posX = (80*2*(i%5))-400;
+		int posY = (80*(i/5))-200;
+		int posZ = -140;
+		nod_oficina_pared1[i]->setPosition(Vector3( posX ,posY, posZ));
+		nod_oficina_pared1[i]->pitch( Degree(-90));
+	}
+
+	// Pared3
+	Entity* ent_oficina_pared3[10];
+
+	for( int i=0; i<10; i++)
+	{
+		ent_oficina_pared3[i] = mSceneMgr->createEntity("ent_oficina_pared3_"+i,"oficina_pared3.mesh");
+	}
+
+	SceneNode* nod_oficina_pared3[10];
+
+	for( int i=0; i<10; i++)
+	{
+		nod_oficina_pared3[i] = mSceneMgr->getRootSceneNode()->createChildSceneNode("nodo_oficina_pared3_"+i);
+		nod_oficina_pared3[i]->attachObject(ent_oficina_pared3[i]);
+		nod_oficina_pared3[i]->scale(10,10,10);
+		int posX = (80*2*(i%5))-480;
+		int posY = (80*(i/5))-200;
+		int posZ = -140;
+		nod_oficina_pared3[i]->setPosition(Vector3( posX ,posY, posZ));
+		nod_oficina_pared3[i]->pitch( Degree(-90));
+	}
+
 	
 	
 	Light* light = mSceneMgr->createLight("lusesica");
 	light->setType(Light::LT_POINT);
-	light->setPosition(Vector3(0,150,300));
-	light->setDiffuseColour(1.0, 1.0, 1.0);
-	light->setSpecularColour(1.2, 1.2, 1.2);
+	light->setPosition(Vector3(100,150,300));
+	light->setDiffuseColour(0.4, 0.4, 0.4);
+	light->setSpecularColour(0.2, 0.2, 0.2);
+	
+
 }
 
 // Destruye la escena.
