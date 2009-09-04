@@ -11,7 +11,7 @@
 #include "InterfazINF.h"
 #include "InterfazSND.h"
 //#include "ManejadorEventos.h"
-//#include "Nivel.h"
+#include "Nivel.h"
 #include <iostream>
 
 using namespace std;
@@ -50,6 +50,9 @@ class Juego
 		
 		/// Manejador de eventos.
 		//ManejadorEventos manejadorEventos;
+
+		/// Niveles del juego
+		Nivel maribel;
 		
 	protected:
 	
