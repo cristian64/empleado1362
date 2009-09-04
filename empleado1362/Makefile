@@ -10,7 +10,7 @@ DEBUG= #-D DEBUG
 LIBDIR=src
 INCLUDEDIR=include
 INCLUDEDIR2=lib/irrKlang
-_OBJ= InterfazGFX.o InterfazIA.o InterfazPSX.o InterfazINF.o InterfazSND.o ManejadorEventos.o Juego.o
+_OBJ= InterfazGFX.o InterfazIA.o InterfazPSX.o InterfazINF.o InterfazSND.o ManejadorEventos.o Coordenada.o Nivel.o Pantalla.o Juego.o
 OBJ = $(patsubst %,$(LIBDIR)/%,$(_OBJ))
 
 

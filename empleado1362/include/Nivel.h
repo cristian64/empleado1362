@@ -7,8 +7,9 @@
 
 
 #include "Pantalla.h"
-#include "Coordenada2D.h"
+#include "Coordenada.h"
 #include "InterfazINF.h"
+#include "Matriz.h"
 #include <iostream>
 
 using namespace std;
@@ -30,49 +31,55 @@ class Nivel
 
 
 		/// Obtiene el identificador del nivel.
-		int getIdentificador();
+		int getIdentificador() const;
 
 		/// Establece el identificador del nivel.
 		void setIdentificador(int identificador);
 
 		/// Obtiene el nombre del nivel.
-		string getNombre();
+		string getNombre() const;
 
 		/// Establece el nombre del nivel.
 		void setNombre(string nombre);
 
 		/// Obtiene la dificultad del nivel.
-		int getDificultad();
+		int getDificultad() const;
 
 		/// Establece la dificultad del nivel.
 		void setDificultad(int dificultad);
 
-		/// Obtiene la coordenada2D de la pantalla inicial.
-		Coordenada2D getPantallaInicial();
+		/// Obtiene la coordenada de la pantalla inicial.
+		Coordenada getPantallaInicial() const;
 
-		/// Establece la coordenada2D de la pantalla inicial.
-		void setPantallaInicial(Coordenada2D pantallaInicial);
+		/// Establece la coordenada de la pantalla inicial.
+		void setPantallaInicial(Coordenada pantallaInicial);
 
-		/// Obtiene la coordenada2D de la pantalla final.
-		Coordenada2D getPantallaFinal();
+		/// Obtiene la coordenada de la pantalla final.
+		Coordenada getPantallaFinal() const;
 
-		/// Establece la coordenada2D de la pantalla final.
-		void setPantallaFinal(Coordenada2D pantallaFinal);
+		/// Establece la coordenada de la pantalla final.
+		void setPantallaFinal(Coordenada pantallaFinal);
 
-		/// Obtiene la coordenada2D de la pantalla actual.
-		Coordenada2D getPantallaActual();
+		/// Obtiene la coordenada de la pantalla actual.
+		Coordenada getPantallaActual() const;
 
-		/// Establece la coordenada2D de la pantalla actual.
-		void setPantallaActual(Coordenada2D pantallaActual);
+		/// Establece la coordenada de la pantalla actual.
+		void setPantallaActual(Coordenada pantallaActual);
 
-		/// Obtiene la Pantalla a través de una Coordenada2D.
-		Pantalla getPantalla(Coordenada2D coordenada);
+		/// Obtiene las pantallas.
+		Matriz<Pantalla> getPantallas() const;
+
+		/// Establece las pantallas.
+		void setPantallas(Matriz<Pantalla> pantallas);
+		
+		/// Obtiene la Pantalla a través de una Coordenada.
+		Pantalla getPantalla(Coordenada coordenada) const;
 
 		/// Obtiene la Pantalla indicando la coordenada.
-		Pantalla getPantalla(int x, int y);
+		Pantalla getPantalla(int x, int y) const;
 
-		/// Establece la pantalla a través de una Coordenada2D.
-		void setPantalla(Coordenada2D coordenada, Pantalla pantalla);
+		/// Establece la pantalla a través de una Coordenada.
+		void setPantalla(Coordenada coordenada, Pantalla pantalla);
 
 		/// Establece la pantalla indicando la coordenada.
 		void setPantalla(int x, int y, Pantalla pantalla);
@@ -85,7 +92,7 @@ class Nivel
 		bool obtener(int identificador);
 
 		/// Actualiza la información del nivel.
-		bool actualizar();
+		bool actualizar() const;
 
 	private:
 		
@@ -99,16 +106,16 @@ class Nivel
 		int dificultad;
 
 		/// Pantalla inicial.
-		Coordenada2D pantallaInicial;
+		Coordenada pantallaInicial;
 
 		/// Pantalla final.
-		Coordenada2D pantallaFinal;
+		Coordenada pantallaFinal;
 
 		/// Pantalla actual.
-		Coordenada2D pantallaActual;
+		Coordenada pantallaActual;
 
 		/// Matriz de pantallas.
-		Pantalla** pantallas;
+		Matriz<Pantalla> pantallas;
 
 	protected:
 };
