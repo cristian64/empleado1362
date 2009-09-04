@@ -4,11 +4,12 @@ LIBS = OGRE OIS
 CXX = g++
 CXXFLAGS = $(shell pkg-config --cflags $(LIBS)) $(DEFINES)
 LD = g++
-LDFLAGS = $(shell pkg-config --libs $(LIBS))
+LDFLAGS = $(shell pkg-config --libs $(LIBS)) -Llib -Llib/irrKlang -lIrrKlang
 OPTIONS= -g -Wall
 DEBUG= #-D DEBUG
 LIBDIR=src
 INCLUDEDIR=include
+INCLUDEDIR2=lib/irrKlang
 _OBJ= InterfazGFX.o InterfazIA.o InterfazPSX.o InterfazINF.o InterfazSND.o ManejadorEventos.o Juego.o
 OBJ = $(patsubst %,$(LIBDIR)/%,$(_OBJ))
 
@@ -21,10 +22,10 @@ OBJ = $(patsubst %,$(LIBDIR)/%,$(_OBJ))
 	
 	
 all: clean ./src/main.cpp $(OBJ)
-	$(CXX) $(CXXFLAGS) $(DEBUG) $(LDFLAGS) -I$(INCLUDEDIR) ./src/main.cpp $(OBJ) -o main
+	$(CXX) $(CXXFLAGS) $(DEBUG) $(LDFLAGS) -I$(INCLUDEDIR) -I$(INCLUDEDIR2) ./src/main.cpp $(OBJ) -o main
 
-$(LIBDIR)/%.o : $(LIBDIR)/%.cpp $(INCLUDEDIR)/%.h
-	$(CXX) $(CXXFLAGS) $(DEBUG) $(LDFLAGS) -c -I$(INCLUDEDIR) -o $@ $<
+$(LIBDIR)/%.o : $(LIBDIR)/%.cpp $(INCLUDEDIR)/%.h lib/irrKlang/irrKlang.h
+	$(CXX) $(CXXFLAGS) $(DEBUG) $(LDFLAGS) -c -I$(INCLUDEDIR) -I$(INCLUDEDIR2) -o $@ $<
 	
 doc:
 	doxygen
