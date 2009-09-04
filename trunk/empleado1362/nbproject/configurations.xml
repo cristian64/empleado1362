@@ -13,7 +13,7 @@
         <itemPath>include/InterfazSND.h</itemPath>
         <itemPath>include/Juego.h</itemPath>
         <itemPath>include/ManejadorEventos.h</itemPath>
-        <itemPath>Nivel.h</itemPath>
+        <itemPath>include/Nivel.h</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
@@ -67,6 +67,17 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <logicalFolder name="src" displayName="src" projectFiles="true">
+        <itemPath>src/InterfazGFX.cpp</itemPath>
+        <itemPath>src/InterfazIA.cpp</itemPath>
+        <itemPath>src/InterfazINF.cpp</itemPath>
+        <itemPath>src/InterfazPSX.cpp</itemPath>
+        <itemPath>src/InterfazSND.cpp</itemPath>
+        <itemPath>src/Juego.cpp</itemPath>
+        <itemPath>src/ManejadorEventos.cpp</itemPath>
+        <itemPath>src/Nivel.cpp</itemPath>
+        <itemPath>src/main.cpp</itemPath>
+      </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -78,6 +89,7 @@
     <Elem>include</Elem>
     <Elem>Media</Elem>
     <Elem>lib</Elem>
+    <Elem>src</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
