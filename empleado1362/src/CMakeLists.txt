@@ -1,0 +1,7 @@
+SET(OBJ Coordenada InterfazGFX InterfazIA InterfazINF InterfazPSX InterfazSND Juego ManejadorEventos Nivel Pantalla)
+ADD_LIBRARY(Juego ${OBJ})
+IF(UNIX)
+	TARGET_LINK_LIBRARIES(Juego)
+ELSEIF(WIN32)
+	TARGET_LINK_LIBRARIES(Juego)
+ENDIF(UNIX)

@@ -31,7 +31,15 @@ OBJECTDIR=build/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/main.o
+	${OBJECTDIR}/src/InterfazIA.o \
+	${OBJECTDIR}/src/Nivel.o \
+	${OBJECTDIR}/src/main.o \
+	${OBJECTDIR}/src/Juego.o \
+	${OBJECTDIR}/src/InterfazSND.o \
+	${OBJECTDIR}/src/InterfazPSX.o \
+	${OBJECTDIR}/src/Pantalla.o \
+	${OBJECTDIR}/src/InterfazGFX.o \
+	${OBJECTDIR}/src/InterfazINF.o
 
 # C Compiler Flags
 CFLAGS=
@@ -57,9 +65,41 @@ dist/Debug/GNU-Linux-x86/empleado1362: ${OBJECTFILES}
 	${MKDIR} -p dist/Debug/GNU-Linux-x86
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/empleado1362 ${OBJECTFILES} ${LDLIBSOPTIONS} 
 
-${OBJECTDIR}/main.o: nbproject/Makefile-${CND_CONF}.mk main.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	$(COMPILE.cc) -g -o ${OBJECTDIR}/main.o main.cpp
+${OBJECTDIR}/src/InterfazIA.o: nbproject/Makefile-${CND_CONF}.mk src/InterfazIA.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	$(COMPILE.cc) -g -I/usr/local/include/OGRE -o ${OBJECTDIR}/src/InterfazIA.o src/InterfazIA.cpp
+
+${OBJECTDIR}/src/Nivel.o: nbproject/Makefile-${CND_CONF}.mk src/Nivel.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	$(COMPILE.cc) -g -I/usr/local/include/OGRE -o ${OBJECTDIR}/src/Nivel.o src/Nivel.cpp
+
+${OBJECTDIR}/src/main.o: nbproject/Makefile-${CND_CONF}.mk src/main.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	$(COMPILE.cc) -g -I/usr/local/include/OGRE -o ${OBJECTDIR}/src/main.o src/main.cpp
+
+${OBJECTDIR}/src/Juego.o: nbproject/Makefile-${CND_CONF}.mk src/Juego.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	$(COMPILE.cc) -g -I/usr/local/include/OGRE -o ${OBJECTDIR}/src/Juego.o src/Juego.cpp
+
+${OBJECTDIR}/src/InterfazSND.o: nbproject/Makefile-${CND_CONF}.mk src/InterfazSND.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	$(COMPILE.cc) -g -I/usr/local/include/OGRE -o ${OBJECTDIR}/src/InterfazSND.o src/InterfazSND.cpp
+
+${OBJECTDIR}/src/InterfazPSX.o: nbproject/Makefile-${CND_CONF}.mk src/InterfazPSX.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	$(COMPILE.cc) -g -I/usr/local/include/OGRE -o ${OBJECTDIR}/src/InterfazPSX.o src/InterfazPSX.cpp
+
+${OBJECTDIR}/src/Pantalla.o: nbproject/Makefile-${CND_CONF}.mk src/Pantalla.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	$(COMPILE.cc) -g -I/usr/local/include/OGRE -o ${OBJECTDIR}/src/Pantalla.o src/Pantalla.cpp
+
+${OBJECTDIR}/src/InterfazGFX.o: nbproject/Makefile-${CND_CONF}.mk src/InterfazGFX.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	$(COMPILE.cc) -g -I/usr/local/include/OGRE -o ${OBJECTDIR}/src/InterfazGFX.o src/InterfazGFX.cpp
+
+${OBJECTDIR}/src/InterfazINF.o: nbproject/Makefile-${CND_CONF}.mk src/InterfazINF.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	$(COMPILE.cc) -g -I/usr/local/include/OGRE -o ${OBJECTDIR}/src/InterfazINF.o src/InterfazINF.cpp
 
 # Subprojects
 .build-subprojects:

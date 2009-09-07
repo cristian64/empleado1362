@@ -5,15 +5,14 @@
                    displayName="Header Files"
                    projectFiles="true">
       <logicalFolder name="include" displayName="include" projectFiles="true">
-        <itemPath>include/FrameListener.h</itemPath>
         <itemPath>include/InterfazGFX.h</itemPath>
         <itemPath>include/InterfazIA.h</itemPath>
         <itemPath>include/InterfazINF.h</itemPath>
         <itemPath>include/InterfazPSX.h</itemPath>
         <itemPath>include/InterfazSND.h</itemPath>
         <itemPath>include/Juego.h</itemPath>
-        <itemPath>include/ManejadorEventos.h</itemPath>
         <itemPath>include/Nivel.h</itemPath>
+        <itemPath>include/Pantalla.h</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
@@ -74,8 +73,8 @@
         <itemPath>src/InterfazPSX.cpp</itemPath>
         <itemPath>src/InterfazSND.cpp</itemPath>
         <itemPath>src/Juego.cpp</itemPath>
-        <itemPath>src/ManejadorEventos.cpp</itemPath>
         <itemPath>src/Nivel.cpp</itemPath>
+        <itemPath>src/Pantalla.cpp</itemPath>
         <itemPath>src/main.cpp</itemPath>
       </logicalFolder>
     </logicalFolder>
@@ -100,6 +99,11 @@
         <platform>2</platform>
       </toolsSet>
       <compileType>
+        <ccTool>
+          <incDir>
+            <pElem>/usr/local/include/OGRE</pElem>
+          </incDir>
+        </ccTool>
         <linkerTool>
           <linkerLibItems>
           </linkerLibItems>

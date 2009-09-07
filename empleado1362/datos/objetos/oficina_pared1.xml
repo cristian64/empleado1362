@@ -1,0 +1,9 @@
+<tipoObjeto>
+	<identificador>oficina_pared1</identificador>
+	<modelo>oficina_pared1.mesh</modelo>
+	<masa>400</masa>
+</tipoObjeto>
+
+<tipoObjeto>
+	<identificador>oficina_pared2</identificador>
+</tipoObjeto>
