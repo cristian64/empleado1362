@@ -5,7 +5,8 @@
 #ifndef _INTERFAZPSX_H
 #define _INTERFAZPSX_H
 
-//#include "PhysX.h"
+#include "btBulletCollisionCommon.h"
+#include "btBulletDynamicsCommon.h"
 #include <iostream>
 
 using namespace std;
@@ -15,26 +16,38 @@ using namespace std;
 */
 class InterfazPSX
 {
-	public:
-		
-		/// Obtiene la instancia.
-		static InterfazPSX* getInstancia();
-	    
-	    /// Destructor por defecto.
-	    ~InterfazPSX();
-	
-	    /// Inicia la interfaz.
-	    void iniciar();
-	    
-	private:
-	
-		 /// Constructor por defecto.
-	    InterfazPSX();
-	    
-	    /// Instancia de la clase.
-	    static InterfazPSX* instancia;
-	    
-	protected:
+    
+    public:
+
+        /// Obtiene la instancia.
+        static InterfazPSX* getInstancia();
+
+        /// Destructor por defecto.
+        ~InterfazPSX();
+
+        /// Inicia la interfaz.
+        void iniciar();
+
+
+    private:
+
+        /// Constructor por defecto.
+        InterfazPSX();
+
+        /// Instancia de la clase.
+        static InterfazPSX* instancia;
+
+        btDefaultCollisionConfiguration* collisionConfiguration;
+        btCollisionDispatcher* dispatcher;
+        btAxisSweep3* overlappingPairCache;
+        btSequentialImpulseConstraintSolver* solver;
+        btDiscreteDynamicsWorld* dynamicsWorld;
+        btCollisionShape* groundShape;
+        btAlignedObjectArray<btCollisionShape*> collisionShapes;
+        btRigidBody* body;
+
+
+    protected:
 	
 };
 		

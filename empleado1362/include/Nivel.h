@@ -7,9 +7,8 @@
 
 
 #include "Pantalla.h"
-#include "Coordenada.h"
 #include "InterfazINF.h"
-#include "Matriz.h"
+#include <list>
 #include <iostream>
 
 using namespace std;
@@ -48,43 +47,35 @@ class Nivel
 		/// Establece la dificultad del nivel.
 		void setDificultad(int dificultad);
 
-		/// Obtiene la coordenada de la pantalla inicial.
-		Coordenada getPantallaInicial() const;
+		/// Obtiene la pantalla inicial.
+		Pantalla* getPantallaInicial() const;
 
-		/// Establece la coordenada de la pantalla inicial.
-		void setPantallaInicial(Coordenada pantallaInicial);
+		/// Establece la pantalla inicial.
+		void setPantallaInicial(Pantalla* pantallaInicial);
 
-		/// Obtiene la coordenada de la pantalla final.
-		Coordenada getPantallaFinal() const;
+		/// Obtiene la pantalla final.
+		Pantalla* getPantallaFinal() const;
 
-		/// Establece la coordenada de la pantalla final.
-		void setPantallaFinal(Coordenada pantallaFinal);
+		/// Establece la pantalla final.
+		void setPantallaFinal(Pantalla* pantallaFinal);
 
-		/// Obtiene la coordenada de la pantalla actual.
-		Coordenada getPantallaActual() const;
+		/// Obtiene la pantalla actual.
+		Pantalla* getPantallaActual() const;
 
-		/// Establece la coordenada de la pantalla actual.
-		void setPantallaActual(Coordenada pantallaActual);
+		/// Establece la pantalla actual.
+		void setPantallaActual(Pantalla* pantallaActual);
 
 		/// Obtiene las pantallas.
-		Matriz<Pantalla> getPantallas() const;
+		list<Pantalla*> getPantallas() const;
 
 		/// Establece las pantallas.
-		void setPantallas(Matriz<Pantalla> pantallas);
+		void setPantallas(list<Pantalla*> pantallas);
 		
-		/// Obtiene la Pantalla a través de una Coordenada.
-		Pantalla getPantalla(Coordenada coordenada) const;
+		/// Obtiene la Pantalla a través de un id.
+		Pantalla* getPantalla(int idPantalla) const;
 
-		/// Obtiene la Pantalla indicando la coordenada.
-		Pantalla getPantalla(int x, int y) const;
-
-		/// Establece la pantalla a través de una Coordenada.
-		void setPantalla(Coordenada coordenada, Pantalla pantalla);
-
-		/// Establece la pantalla indicando la coordenada.
-		void setPantalla(int x, int y, Pantalla pantalla);
-
-
+		/// Establece la pantalla a través de un id.
+		void setPantalla(int idPantalla, Pantalla* pantalla);
 
 
 
@@ -106,16 +97,16 @@ class Nivel
 		int dificultad;
 
 		/// Pantalla inicial.
-		Coordenada pantallaInicial;
+		Pantalla* pantallaInicial;
 
 		/// Pantalla final.
-		Coordenada pantallaFinal;
+		Pantalla* pantallaFinal;
 
 		/// Pantalla actual.
-		Coordenada pantallaActual;
+		Pantalla* pantallaActual;
 
 		/// Matriz de pantallas.
-		Matriz<Pantalla> pantallas;
+		list<Pantalla*> pantallas;
 
 	protected:
 };

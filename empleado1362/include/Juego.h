@@ -10,8 +10,9 @@
 #include "InterfazPSX.h"
 #include "InterfazINF.h"
 #include "InterfazSND.h"
-//#include "ManejadorEventos.h"
 #include "Nivel.h"
+#define OIS_DYNAMIC_LIB
+#include <OIS/OIS.h>
 #include <iostream>
 
 using namespace std;
@@ -21,16 +22,59 @@ using namespace std;
 class Juego
 {
 	public:
-	
-	    /// Constructor por defecto
-	    Juego();
-	    
-	    /// Destructor por defecto
-	    ~Juego();
-	
-	    /// Inicia el juego
-	    void iniciar();
-	
+
+		/// Constructor por defecto
+		Juego();
+
+		/// Destructor por defecto
+		~Juego();
+
+
+
+
+
+		/// Inicia el juego
+		void iniciar();
+
+		/// Actualiza el juego.
+		void actualizar();
+
+		/// Realiza un render.
+		void render();
+
+		/// Procesa los eventos de teclado.
+		//bool procesarTeclado(const FrameEvent& evt);
+		bool procesarTeclado();
+
+		/// Procesa los eventos del ratón.
+		//bool procesarRaton(const FrameEvent& evt);
+		bool procesarRaton();
+
+
+		
+		
+		
+		/// Obtiene el mInput Manager.
+		OIS::InputManager* getmInputManager() const;
+		
+		/// Establece el mInput Manager.
+		void setmInputManager(OIS::InputManager* mInputManager);
+
+		/// Obtiene el mMouse.
+		OIS::Mouse* getmMouse() const;
+
+		/// Establece el mMouse.
+		void setmMouse(OIS::Mouse* mMouse);
+
+		/// Obtiene el mKeyboard.
+		OIS::Keyboard* getmKeyboard() const;
+
+		/// Establece el mKeyboard.
+		void setmKeyboard(OIS::Keyboard* mKeyboard);
+
+		/// Establece todos los input devices.
+		void setInputDevices(OIS::InputManager* mInputManager, OIS::Mouse* mMouse, OIS::Keyboard* mKeyboard);
+
 	private:
 		
 		/// Barrera de abstracción para los gráficos del juego.
@@ -47,13 +91,18 @@ class Juego
 		
 		/// Barrera de abstracción para el sonido del juego.
 		InterfazSND* interfazSND;
-		
-		/// Manejador de eventos.
-		//ManejadorEventos manejadorEventos;
 
 		/// Niveles del juego
-		Nivel maribel;
+		Nivel* niveles;
+
+		//OIS Input devices
+		OIS::InputManager* mInputManager;
+		OIS::Mouse* mMouse;
+		OIS::Keyboard* mKeyboard;
 		
+		/// ADSF
+		int done;
+
 	protected:
 	
 };
