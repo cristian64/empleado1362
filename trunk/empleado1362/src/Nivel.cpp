@@ -55,77 +55,69 @@ void Nivel::setDificultad(int dificultad)
 	this->dificultad = dificultad;
 }
 
-// Obtiene la coordenada de la pantalla inicial.
-Coordenada Nivel::getPantallaInicial() const
+// Obtiene la pantalla inicial.
+Pantalla* Nivel::getPantallaInicial() const
 {
 	return pantallaInicial;
 }
 
-// Establece la coordenada de la pantalla inicial.
-void Nivel::setPantallaInicial(Coordenada pantallaInicial)
+// Establece la pantalla inicial.
+void Nivel::setPantallaInicial(Pantalla* pantallaInicial)
 {
 	this->pantallaInicial = pantallaInicial;
 }
 
-// Obtiene la coordenada de la pantalla final.
-Coordenada Nivel::getPantallaFinal() const
+// Obtiene la pantalla final.
+Pantalla* Nivel::getPantallaFinal() const
 {
 	return pantallaFinal;
 }
 
-// Establece la coordenada de la pantalla final.
-void Nivel::setPantallaFinal(Coordenada pantallaFinal)
+// Establece la pantalla final.
+void Nivel::setPantallaFinal(Pantalla* pantallaFinal)
 {
 	this->pantallaFinal = pantallaFinal;
 }
 
-// Obtiene la coordenada de la pantalla actual.
-Coordenada Nivel::getPantallaActual() const
+// Obtiene la pantalla actual.
+Pantalla* Nivel::getPantallaActual() const
 {
 	return pantallaActual;
 }
 
-// Establece la coordenada de la pantalla actual.
-void Nivel::setPantallaActual(Coordenada pantallaActual)
+// Establece la pantalla actual.
+void Nivel::setPantallaActual(Pantalla* pantallaActual)
 {
 	this->pantallaActual = pantallaActual;
 }
 
 // Obtiene las pantallas.
-Matriz<Pantalla> Nivel::getPantallas() const
+list<Pantalla*> Nivel::getPantallas() const
 {
 	return pantallas;
 }
 
 // Establece las pantallas.
-void Nivel::setPantallas(Matriz<Pantalla> pantallas)
+void Nivel::setPantallas(list<Pantalla*> pantallas)
 {
 	this->pantallas = pantallas;
 }
 
-// Obtiene la Pantalla a través de una Coordenada.
-Pantalla Nivel::getPantalla(Coordenada coordenada) const
+// Obtiene la Pantalla a través de un id.
+Pantalla* Nivel::getPantalla(int idPantalla) const
 {
-	return getPantalla(coordenada.getX(), coordenada.getY());
+	return pantallaInicial;
 }
 
-// Obtiene la Pantalla indicando la coordenada.
-Pantalla Nivel::getPantalla(int x, int y) const
+// Establece la pantalla a través de un id.
+void Nivel::setPantalla(int idPantalla, Pantalla* pantalla)
 {
-	return pantallas[x][y];
+	
 }
 
-// Establece la pantalla a través de una Coordenada.
-void Nivel::setPantalla(Coordenada coordenada, Pantalla pantalla)
-{
-	setPantalla(coordenada.getX(), coordenada.getY(), pantalla);
-}
 
-/// Establece la pantalla indicando la coordenada.
-void Nivel::setPantalla(int x, int y, Pantalla pantalla)
-{
-	pantallas[x][y] = pantalla;
-}
+
+
 
 // Obtiene la información del nivel.
 bool Nivel::obtener(int identificador)

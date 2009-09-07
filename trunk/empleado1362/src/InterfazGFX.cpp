@@ -4,6 +4,7 @@
 
 #include "InterfazGFX.h"
 #include <iostream>
+#include <OGRE/OgreRoot.h>
      
 using namespace std;
 
@@ -12,9 +13,6 @@ InterfazGFX* InterfazGFX::instancia = NULL;
 // Constructor por defecto.
 InterfazGFX::InterfazGFX()
 {
-	// Controlador de eventos.
-	mFrameListener = 0;
-	
 	// Nodo raíz.
 	mRoot = 0;
 }
@@ -22,12 +20,14 @@ InterfazGFX::InterfazGFX()
 // Destructor por defecto.
 InterfazGFX::~InterfazGFX()
 {
-	// Liberamos la memoria.
-	if (mFrameListener != NULL)
-		delete mFrameListener;
-		
 	if (mRoot != NULL)
 		OGRE_DELETE mRoot;
+
+	//Remove ourself as a Window listener
+	WindowEventUtilities::removeWindowEventListener(mWindow, this);
+	windowClosed(mWindow);
+
+	instancia = NULL;
 }
 
 // Devuelve la instancia de la clase singleton.
@@ -44,13 +44,65 @@ void InterfazGFX::iniciar()
 	// Panel de opciones.
 	if (!setup())
 		return;
-	
-	// Dibujamos la escena.
-	mRoot->startRendering();
-	
-	// Liberamos la escena.
-	destruirEscena();
 }
+
+
+
+
+
+// Dibuja la escena.
+bool InterfazGFX::dibujar() const
+{
+	mRoot->renderOneFrame();
+}
+
+// Obtiene el mInput Manager.
+OIS::InputManager* InterfazGFX::getmInputManager() const
+{
+	return mInputManager;
+}
+
+// Establece el mInput Manager.
+void InterfazGFX::setmInputManager(OIS::InputManager* mInputManager)
+{
+	this->mInputManager = mInputManager;
+}
+
+// Obtiene el mMouse.
+OIS::Mouse* InterfazGFX::getmMouse() const
+{
+	return mMouse;
+}
+
+// Establece el mMouse.
+void InterfazGFX::setmMouse(OIS::Mouse* mMouse)
+{
+	this->mMouse = mMouse;
+}
+
+// Obtiene el mKeyboard.
+OIS::Keyboard* InterfazGFX::getmKeyboard() const
+{
+	return mKeyboard;
+}
+
+// Establece el mKeyboard.
+void InterfazGFX::setmKeyboard(OIS::Keyboard* mKeyboard)
+{
+	this->mKeyboard = mKeyboard;
+}
+
+// Establece todos los input devices.
+void InterfazGFX::setInputDevices(OIS::InputManager* mInputManager, OIS::Mouse* mMouse, OIS::Keyboard* mKeyboard)
+{
+	setmInputManager(mInputManager);
+	setmMouse(mMouse);
+	setmKeyboard(mKeyboard);
+}
+
+
+
+
 
 // Establece la configuración.
 bool InterfazGFX::setup()
@@ -84,7 +136,27 @@ bool InterfazGFX::setup()
 	// Crea la escena.
 	crearEscena();
 
-	createFrameListener();
+	// Iniciamos los input devices
+	LogManager::getSingletonPtr()->logMessage("*** Initializing OIS ***");
+	OIS::ParamList pl;
+	size_t windowHnd = 0;
+	std::ostringstream windowHndStr;
+	mWindow->getCustomAttribute("WINDOW", &windowHnd);
+	windowHndStr << windowHnd;
+	pl.insert(std::make_pair(std::string("WINDOW"), windowHndStr.str()));
+	mInputManager = OIS::InputManager::createInputSystem( pl );
+	
+	//Create all devices (We only catch joystick exceptions here, as, most people have Key/Mouse)
+	mKeyboard = static_cast<OIS::Keyboard*>(mInputManager->createInputObject( OIS::OISKeyboard, false ));
+	mMouse = static_cast<OIS::Mouse*>(mInputManager->createInputObject( OIS::OISMouse, false ));
+	
+	//Set initial mouse clipping size
+	windowResized(mWindow);
+
+	//Register as a Window listener
+	WindowEventUtilities::addWindowEventListener(mWindow, this);
+
+	mRoot->addFrameListener(this);
 
 	return true;
 }
@@ -127,13 +199,6 @@ void InterfazGFX::crearCamara()
 	mCamera->lookAt(Vector3(0,0,-300));
 	mCamera->setNearClipDistance(5);
 
-}
-
-// Mierda pura.
-void InterfazGFX::createFrameListener()
-{
-	mFrameListener= new ExampleFrameListener(mWindow, mCamera);
-	mRoot->addFrameListener(mFrameListener);
 }
 
 // Crea la escena.
@@ -227,15 +292,22 @@ void InterfazGFX::crearEscena()
 		nod_oficina_pared3[i]->pitch( Degree(-90));
 	}
 
-	
-	
+	// Luz
 	Light* light = mSceneMgr->createLight("lusesica");
 	light->setType(Light::LT_POINT);
 	light->setPosition(Vector3(100,150,300));
 	light->setDiffuseColour(0.4, 0.4, 0.4);
 	light->setSpecularColour(0.2, 0.2, 0.2);
-	
 
+	// Protagonista
+	Entity* ent_protagonista = mSceneMgr->createEntity("ent_protagonista","protagonista.mesh");
+	SceneNode* nod_protagonista = mSceneMgr->getRootSceneNode()->createChildSceneNode("nodo_protagonista");
+	nod_protagonista->attachObject(ent_protagonista);
+	nod_protagonista->scale(15,15,15);
+	nod_protagonista->setPosition(-300,-150,-100);
+	nod_protagonista->yaw( Degree(90));
+	nod_protagonista->pitch( Degree(-90));
+	
 }
 
 // Destruye la escena.

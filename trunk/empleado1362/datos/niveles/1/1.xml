@@ -1,0 +1,29 @@
+<pantalla>
+
+	<identificador>1</identificador>
+
+	<objeto>
+		<id>0</id>
+		<tipo>oficina_pared1</tipo>
+		<posicion>10,10,10</posicion>
+		<rotacion>90,90,90</rotacion>
+		<escalado>10</escalado>
+	</objeto>
+	
+	<objeto>
+		<id>0</id>
+		<tipo>oficina_suelo1</tipo>
+		<posicion>10,10,10</posicion>
+		<rotacion>90,90,90</rotacion>
+		<escalado>10</escalado>
+	</objeto>
+	
+	<objeto>
+		<id>0</id>
+		<tipo>oficina_pared3</tipo>
+		<posicion>10,10,10</posicion>
+		<rotacion>90,90,90</rotacion>
+		<escalado>10</escalado>
+	</objeto>
+	
+</pantalla>
