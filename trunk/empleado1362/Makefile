@@ -24,7 +24,7 @@ OBJ = $(patsubst %,$(LIBDIR)/%,$(_OBJ))
 	
 	
 all: clean ./src/main.cpp $(OBJ)
-	$(CXX) $(CXXFLAGS) $(DEBUG) $(LDFLAGS) -I$(INCLUDEDIR) -I$(INCLUDEDIR2) ./src/main.cpp $(OBJ) -o main
+	$(CXX) $(CXXFLAGS) $(DEBUG) $(LDFLAGS) -I$(INCLUDEDIR) -I$(INCLUDEDIR2) -Ilib/Bullet ./src/main.cpp $(OBJ) -o main
 
 $(LIBDIR)/%.o : $(LIBDIR)/%.cpp $(INCLUDEDIR)/%.h lib/irrKlang/irrKlang.h
 	$(CXX) $(CXXFLAGS) $(DEBUG) $(LDFLAGS) -c -I$(INCLUDEDIR) -I$(INCLUDEDIR2) -Ilib/Bullet -o $@ $<
