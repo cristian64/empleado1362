@@ -3,6 +3,7 @@
  */
 
 #include "InterfazGFX.h"
+#include "InterfazPSX.h"
 #include <iostream>
 #include <OGRE/OgreRoot.h>
      
@@ -46,7 +47,14 @@ void InterfazGFX::iniciar()
 		return;
 }
 
-
+// Actualiza la interfaz gráfica.
+void InterfazGFX::actualizar()
+{
+	float x = InterfazPSX::getInstancia()->posicionPavicoX();
+	float y = InterfazPSX::getInstancia()->posicionPavicoY();
+	float z = InterfazPSX::getInstancia()->posicionPavicoZ();
+	mSceneMgr->getRootSceneNode()->getChild("nodo_protagonista")->setPosition(x, y, z);
+}
 
 
 
@@ -307,7 +315,6 @@ void InterfazGFX::crearEscena()
 	nod_protagonista->setPosition(-300,-150,-100);
 	nod_protagonista->yaw( Degree(90));
 	nod_protagonista->pitch( Degree(-90));
-	
 }
 
 // Destruye la escena.
