@@ -104,6 +104,7 @@
             <pElem>/usr/local/include/OGRE</pElem>
             <pElem>lib/Bullet</pElem>
             <pElem>lib/irrKlang</pElem>
+            <pElem>include</pElem>
           </incDir>
         </ccTool>
         <linkerTool>

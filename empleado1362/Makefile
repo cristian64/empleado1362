@@ -4,14 +4,16 @@ LIBS = OGRE OIS
 CXX = g++
 CXXFLAGS = $(shell pkg-config --cflags $(LIBS)) $(DEFINES)
 LD = g++
-LDFLAGS = $(shell pkg-config --libs $(LIBS)) -Llib -Llib/irrKlang -lIrrKlang \
-	-Llib/Bullet -Llib/Bullet/BulletDynamics -Llib/Bullet/BulletMultiThreaded -Llib/Bullet/BulletSoftBody -Llib/Bullet/LinearMath -Llib/Bullet/BulletCollision \
-	-lBulletDynamics -lLinearMath -lBulletSoftBody -lBulletMultiThreaded -lBulletCollision
-OPTIONS= -g -Wall
-DEBUG= #-D DEBUG
+LDFLAGS = $(shell pkg-config --libs $(LIBS)) \
+	-Llib/irrKlang -lIrrKlang \
+	-Llib/Bullet/BulletDynamics -Llib/Bullet/LinearMath -Llib/Bullet/BulletCollision \
+	-lBulletDynamics -lLinearMath -lBulletCollision
+
+OPTIONS= -g -Wall -O2
+DEBUG=#-D DEBUG
 LIBDIR=src
 INCLUDEDIR=include
-INCLUDEDIR2=lib/irrKlang
+INCLUDEFLAGS=-Ilib/irrKlang -Ilib/Bullet
 _OBJ= InterfazGFX.o InterfazIA.o InterfazPSX.o InterfazINF.o InterfazSND.o Nivel.o Pantalla.o Juego.o
 OBJ = $(patsubst %,$(LIBDIR)/%,$(_OBJ))
 
@@ -24,10 +26,10 @@ OBJ = $(patsubst %,$(LIBDIR)/%,$(_OBJ))
 	
 	
 all: clean ./src/main.cpp $(OBJ)
-	$(CXX) $(CXXFLAGS) $(DEBUG) $(LDFLAGS) -I$(INCLUDEDIR) -I$(INCLUDEDIR2) -Ilib/Bullet ./src/main.cpp $(OBJ) -o main
+	$(CXX) $(CXXFLAGS) $(DEBUG) -I$(INCLUDEDIR) $(INCLUDEFLAGS) ./src/main.cpp $(OBJ) $(LDFLAGS) -o main
 
-$(LIBDIR)/%.o : $(LIBDIR)/%.cpp $(INCLUDEDIR)/%.h lib/irrKlang/irrKlang.h
-	$(CXX) $(CXXFLAGS) $(DEBUG) $(LDFLAGS) -c -I$(INCLUDEDIR) -I$(INCLUDEDIR2) -Ilib/Bullet -o $@ $<
+$(LIBDIR)/%.o : $(LIBDIR)/%.cpp $(INCLUDEDIR)/%.h
+	$(CXX) $(CXXFLAGS) $(DEBUG) -c -I$(INCLUDEDIR) $(INCLUDEFLAGS) -o $@ $<
 	
 doc:
 	doxygen
