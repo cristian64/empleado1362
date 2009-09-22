@@ -140,9 +140,97 @@ void InterfazPSX::iniciar()
 	myMotionState = new btDefaultMotionState(startTransform);
 	rbInfo = btRigidBody::btRigidBodyConstructionInfo(mass, myMotionState, colShape, localInertia);
 
-	rbInfo.m_linearSleepingThreshold = 10;
+	rbInfo.m_linearSleepingThreshold = 0;
 	body = new btRigidBody(rbInfo);
 	body->applyImpulse(btVector3(5, 10, 7), btVector3(4, 0, 3));
 
 	dynamicsWorld->addRigidBody(body);
+
+
+
+
+	
+	//Algunas cosillas que se pueden hacer con el cuerpo "body", que sería el personaje principal para hacer las pruebas.
+	/*
+	if (key == 'P' || key == 'p')
+	{
+		body->applyImpulse(btVector3(0, 47, 0), btVector3(0, 0, 0));
+		cout << "impulso!!" << endl;
+	}
+	if (key == 'G' || key == 'g')
+	{
+		body->applyImpulse(btVector3(1, 2, 1), btVector3(4, 7, 3));
+		cout << "giro" << endl;
+	}
+	if (key == 'I' || key == 'i')
+	{
+		dynamicsWorld->setGravity(btVector3(100, -100, 10));
+	}
+	if (key == 'R' || key == 'r')
+	{
+		btTransform trans;
+		body->getMotionState()->getWorldTransform(trans);
+		trans.setOrigin(btVector3(0,0,0));
+		body->getMotionState()->setWorldTransform(trans);
+	}
+	*/
+
+
+	//########################################################################################################
+	//###### Actualizamos el mundo diciendole que ha transcurrido una cantidad de tiempo.
+	//###### Hay que hacerlo en cada render, diciéndoselo a Ogre de alguna forma
+	//########################################################################################################
+	/*
+	int tiempoActual = glutGet(GLUT_ELAPSED_TIME);
+	dynamicsWorld->stepSimulation((tiempoActual - tiempoAnterior) / 1000.0, 10);
+	tiempoAnterior = tiempoActual;
+	*/
+
+
+
+	//########################################################################################################
+	//###### Extraemos la matriz de posicion del objeto y se la asignamos al nodo de Ogre para la posición.
+	//###### En OpenGL, lo que se hacía era multiplicar la matriz extraida en la ModelMatrix, con Ogre
+	//###### Habrá que asignarle la posición al nodo, no sé cómo.
+	//########################################################################################################
+	/*
+	if (body && body->getMotionState())
+	{
+		btTransform trans;
+		body->getMotionState()->getWorldTransform(trans);
+		GLfloat m[16];
+		trans.getOpenGLMatrix(m);
+
+		
+		glMultMatrixf(m);
+	}
+	cubo();
+	*/
+}
+
+// Actualiza la interfaz física.
+void InterfazPSX::actualizar(int tiempoTranscurrido)
+{
+	dynamicsWorld->stepSimulation(tiempoTranscurrido / 1000.0, 10);
+}
+
+// Éste método habría que borrarlo. Es de prueba.
+void InterfazPSX::moverPavico(string movimiento)
+{
+	if (movimiento == "arriba")
+	{
+		body->applyImpulse(btVector3(0, 50, 0), btVector3(0,0,0));
+	}
+	if (movimiento == "abajo")
+	{
+		body->applyImpulse(btVector3(0, -50, 0), btVector3(0,0,0));
+	}
+	if (movimiento == "derecha")
+	{
+		body->applyImpulse(btVector3(10, 0, 0), btVector3(0,0,0));
+	}
+	if (movimiento == "izquierda")
+	{
+		body->applyImpulse(btVector3(-10, 0, 0), btVector3(0,0,0));
+	}
 }

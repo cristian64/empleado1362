@@ -28,6 +28,29 @@ class InterfazPSX
         /// Inicia la interfaz.
         void iniciar();
 
+        /// Actualiza la interfaz física.
+        void actualizar(int tiempoTranscurrido);
+
+        // Estos 4 métodos siguientes son para borrarlo. Son de prueba.
+        void moverPavico(string movimiento);
+        float posicionPavicoX()
+        {
+            btTransform trans;
+            body->getMotionState()->getWorldTransform(trans);
+            return trans.getOrigin().x();
+        }
+        float posicionPavicoY()
+        {
+            btTransform trans;
+            body->getMotionState()->getWorldTransform(trans);
+            return trans.getOrigin().y();
+        }
+        float posicionPavicoZ()
+        {
+            btTransform trans;
+            body->getMotionState()->getWorldTransform(trans);
+            return trans.getOrigin().z();
+        }
 
     private:
 

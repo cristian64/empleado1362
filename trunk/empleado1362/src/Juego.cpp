@@ -62,9 +62,10 @@ void Juego::actualizar()
 	//interfazIA->actualizar();
 
 	// Actualiza PSX
-	//interfazPSX->actualizar();
+	interfazPSX->actualizar(10);
 	
 	// Actualiza GFX
+	interfazGFX->actualizar();
 	/*
 	list<Objetos> objetos = niveles.getPantalla(niveles.getPantallaActual().getX, niveles.getPantallaActual().getY()).getObjetos;
 	list<Objetos>::iterator pos = objetos.begin();
@@ -105,24 +106,28 @@ bool Juego::procesarTeclado()
 	{
 		//Salto
 		cout << "Salto" << endl;
+		interfazPSX->moverPavico("arriba");
 	}
 
 	if(mKeyboard->isKeyDown(OIS::KC_DOWN) || mKeyboard->isKeyDown(OIS::KC_S) )
 	{
 		// Agacharse
 		cout << "Agacharse" << endl;
+		interfazPSX->moverPavico("abajo");
 	}
 
 	if(mKeyboard->isKeyDown(OIS::KC_RIGHT) || mKeyboard->isKeyDown(OIS::KC_D) )
 	{
 		// Desplazar derecha
 		cout << "Derecha" << endl;
+		interfazPSX->moverPavico("derecha");
 	}
 
 	if(mKeyboard->isKeyDown(OIS::KC_LEFT) || mKeyboard->isKeyDown(OIS::KC_A) )
 	{
 		// Desplazar izquierda
 		cout << "Izquierda" << endl;
+		interfazPSX->moverPavico("izquierda");
 	}
 
 	return true;

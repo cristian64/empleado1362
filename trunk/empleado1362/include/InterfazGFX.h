@@ -2,7 +2,7 @@
 /** \file InterfazGFX.h
  */
 	
-#ifndef _INTERFAZGFX_H_
+#ifndef _INTERFAZGFX_H
 #define _INTERFAZGFX_H
 
 #include "Ogre.h"
@@ -32,7 +32,8 @@ class InterfazGFX: public FrameListener, public WindowEventListener
 		/// Inicia la interfaz.
 		void iniciar();
 
-
+                /// Actualiza la interfaz gráfica.
+                void actualizar();
 
 
 
