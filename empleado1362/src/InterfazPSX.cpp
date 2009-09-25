@@ -71,7 +71,7 @@ void InterfazPSX::iniciar()
 	/////////////////////////////////////////////////////////////////////
 
 	///create a few basic rigid bodies
-	groundShape = new btBoxShape(btVector3(btScalar(100.), btScalar(0.00001), btScalar(100.)));
+	groundShape = new btBoxShape(btVector3(btScalar(1000.), btScalar(43.00001), btScalar(1000.)));
 
 
 	//keep track of the shapes, we release memory at exit.
@@ -232,5 +232,13 @@ void InterfazPSX::moverPavico(string movimiento)
 	if (movimiento == "izquierda")
 	{
 		body->applyImpulse(btVector3(-10, 0, 0), btVector3(0,0,0));
+	}
+	if (movimiento == "dentro")
+	{
+		body->applyImpulse(btVector3(0, 0, -10), btVector3(0,0,0));
+	}
+	if (movimiento == "fuera")
+	{
+		body->applyImpulse(btVector3(0, 0, 10), btVector3(0,0,0));
 	}
 }

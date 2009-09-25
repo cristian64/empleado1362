@@ -104,30 +104,38 @@ bool Juego::procesarTeclado()
 
 	if(mKeyboard->isKeyDown(OIS::KC_UP) || mKeyboard->isKeyDown(OIS::KC_W) )
 	{
-		//Salto
-		cout << "Salto" << endl;
-		interfazPSX->moverPavico("arriba");
+		// Desplazar hacia dentro.
+		interfazPSX->moverPavico("dentro");
 	}
 
 	if(mKeyboard->isKeyDown(OIS::KC_DOWN) || mKeyboard->isKeyDown(OIS::KC_S) )
 	{
-		// Agacharse
-		cout << "Agacharse" << endl;
-		interfazPSX->moverPavico("abajo");
+		// Desplazar hacia fuera.
+		interfazPSX->moverPavico("fuera");
 	}
 
 	if(mKeyboard->isKeyDown(OIS::KC_RIGHT) || mKeyboard->isKeyDown(OIS::KC_D) )
 	{
-		// Desplazar derecha
-		cout << "Derecha" << endl;
+		// Desplazar derecha.
 		interfazPSX->moverPavico("derecha");
 	}
 
 	if(mKeyboard->isKeyDown(OIS::KC_LEFT) || mKeyboard->isKeyDown(OIS::KC_A) )
 	{
-		// Desplazar izquierda
-		cout << "Izquierda" << endl;
+		// Desplazar izquierda.
 		interfazPSX->moverPavico("izquierda");
+	}
+
+	if(mKeyboard->isKeyDown(OIS::KC_SPACE))
+	{
+		// Saltar.
+		interfazPSX->moverPavico("arriba");
+	}
+
+	if(mKeyboard->isKeyDown(OIS::KC_LCONTROL) || mKeyboard->isKeyDown(OIS::KC_RCONTROL))
+	{
+		// Agacharse.
+		interfazPSX->moverPavico("abajo");
 	}
 
 	return true;
