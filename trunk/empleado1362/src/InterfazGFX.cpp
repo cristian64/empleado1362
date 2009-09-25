@@ -61,6 +61,7 @@ void InterfazGFX::actualizar()
 // Dibuja la escena.
 bool InterfazGFX::dibujar() const
 {
+	// Dibujamos un frame.
 	mRoot->renderOneFrame();
 }
 
@@ -191,8 +192,8 @@ bool InterfazGFX::configure()
 // Selecciona el SceneManager.
 void InterfazGFX::chooseSceneManager()
 {
-	// Create the SceneManager, in this case a generic one
-	mSceneMgr = mRoot->createSceneManager(ST_GENERIC, "ExampleSMInstance");
+	// Create the SceneManager de interior.
+	mSceneMgr = mRoot->createSceneManager(ST_INTERIOR, "EscenaInterior");
 }
 
 // Crea la cámara.
@@ -202,9 +203,9 @@ void InterfazGFX::crearCamara()
 	mCamera = mSceneMgr->createCamera("PlayerCam");
 
 	// Position it at 500 in Z direction
-	mCamera->setPosition(Vector3(0,0,500));
+	mCamera->setPosition(Vector3(0,100,500));
 	// Look back along -Z
-	mCamera->lookAt(Vector3(0,0,-300));
+	mCamera->lookAt(Vector3(0,0,0));
 	mCamera->setNearClipDistance(5);
 
 }
@@ -212,6 +213,10 @@ void InterfazGFX::crearCamara()
 // Crea la escena.
 void InterfazGFX::crearEscena()
 {
+	// Activamos las sombras
+	mSceneMgr->setShadowTechnique(SHADOWTYPE_STENCIL_ADDITIVE);
+
+	// Activamos la luz ambiente
 	mSceneMgr->setAmbientLight(ColourValue(1, 1, 1));
 
 	// Suelo1
@@ -219,6 +224,7 @@ void InterfazGFX::crearEscena()
 	for( int i=0; i<10; i++)
 	{
 		ent_oficina_suelo1[i] = mSceneMgr->createEntity("ent_oficina_suelo1_"+i,"oficina_suelo1.mesh");
+		ent_oficina_suelo1[i]->setCastShadows(false);
 	}
 
 	SceneNode* nod_oficina_suelo1[10];
@@ -229,7 +235,7 @@ void InterfazGFX::crearEscena()
 		nod_oficina_suelo1[i]->attachObject(ent_oficina_suelo1[i]);
 		nod_oficina_suelo1[i]->scale(10,10,10);
 		int posX = (80*(i%5))-400;
-		int posY = -200;
+		int posY = 0;
 		int posZ = (80*(i/5))-100;
 		nod_oficina_suelo1[i]->setPosition(Vector3( posX ,posY, posZ));
 		nod_oficina_suelo1[i]->pitch( Degree(-90));
@@ -240,6 +246,7 @@ void InterfazGFX::crearEscena()
 	for( int i=0; i<10; i++)
 	{
 		ent_oficina_suelo2[i] = mSceneMgr->createEntity("ent_oficina_suelo2_"+i,"oficina_suelo2.mesh");
+		ent_oficina_suelo2[i]->setCastShadows(false);
 	}
 
 	SceneNode* nod_oficina_suelo2[10];
@@ -250,7 +257,7 @@ void InterfazGFX::crearEscena()
 		nod_oficina_suelo2[i]->attachObject(ent_oficina_suelo2[i]);
 		nod_oficina_suelo2[i]->scale(10,10,10);
 		int posX = (80*(i%5));
-		int posY = -200;
+		int posY = 0;
 		int posZ = (80*(i/5))-100;
 		nod_oficina_suelo2[i]->setPosition(Vector3( posX ,posY, posZ));
 		nod_oficina_suelo2[i]->pitch( Degree(-90));
@@ -262,6 +269,7 @@ void InterfazGFX::crearEscena()
 	for( int i=0; i<10; i++)
 	{
 		ent_oficina_pared1[i] = mSceneMgr->createEntity("ent_oficina_pared1_"+i,"oficina_pared1.mesh");
+		ent_oficina_pared1[i]->setCastShadows(false);
 	}
 
 	SceneNode* nod_oficina_pared1[10];
@@ -272,7 +280,7 @@ void InterfazGFX::crearEscena()
 		nod_oficina_pared1[i]->attachObject(ent_oficina_pared1[i]);
 		nod_oficina_pared1[i]->scale(10,10,10);
 		int posX = (80*2*(i%5))-400;
-		int posY = (80*(i/5))-200;
+		int posY = 80*(i/5);
 		int posZ = -140;
 		nod_oficina_pared1[i]->setPosition(Vector3( posX ,posY, posZ));
 		nod_oficina_pared1[i]->pitch( Degree(-90));
@@ -284,6 +292,7 @@ void InterfazGFX::crearEscena()
 	for( int i=0; i<10; i++)
 	{
 		ent_oficina_pared3[i] = mSceneMgr->createEntity("ent_oficina_pared3_"+i,"oficina_pared3.mesh");
+		ent_oficina_pared3[i]->setCastShadows(false);
 	}
 
 	SceneNode* nod_oficina_pared3[10];
@@ -294,7 +303,7 @@ void InterfazGFX::crearEscena()
 		nod_oficina_pared3[i]->attachObject(ent_oficina_pared3[i]);
 		nod_oficina_pared3[i]->scale(10,10,10);
 		int posX = (80*2*(i%5))-480;
-		int posY = (80*(i/5))-200;
+		int posY = 80*(i/5);
 		int posZ = -140;
 		nod_oficina_pared3[i]->setPosition(Vector3( posX ,posY, posZ));
 		nod_oficina_pared3[i]->pitch( Degree(-90));
@@ -312,7 +321,7 @@ void InterfazGFX::crearEscena()
 	SceneNode* nod_protagonista = mSceneMgr->getRootSceneNode()->createChildSceneNode("nodo_protagonista");
 	nod_protagonista->attachObject(ent_protagonista);
 	nod_protagonista->scale(15,15,15);
-	nod_protagonista->setPosition(-300,-150,-100);
+	nod_protagonista->setPosition(-300,0,-100);
 	nod_protagonista->yaw( Degree(90));
 	nod_protagonista->pitch( Degree(-90));
 }
@@ -328,7 +337,7 @@ void InterfazGFX::crearViewports()
 {
 	// Crea un viewport en toda la ventana.
 	Viewport* vp = mWindow->addViewport(mCamera);
-	vp->setBackgroundColour(ColourValue(0,0,1));
+	vp->setBackgroundColour(ColourValue(0,0,0));
 
 	// Altera el aspect ratio de la cámara para ajustarlo al viewport.
 	mCamera->setAspectRatio(Real(vp->getActualWidth()) / Real(vp->getActualHeight()));
